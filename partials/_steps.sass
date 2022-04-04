@@ -1,0 +1,83 @@
+@use 'vars' as v
+
+.step1
+  flex-wrap: wrap
+  justify-content: center
+  align-items: center
+  gap: 24px
+
+  &__place
+    cursor: pointer
+    display: inline-flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    font-family: v.$fontMono
+    text-transform: uppercase
+    font-weight: bold
+    user-select: none
+
+  &__checkbox
+    display: none
+
+  &__control
+    display: block
+    width: 24px
+    height: 24px
+    background-color: v.$cAlt
+
+  &__checkbox:checked + &__control
+    background-color: white
+
+
+.step2
+  justify-content: center
+  align-items: center
+  gap: v.$gap
+
+  &__control
+    cursor: pointer
+    font-weight: bold
+    font-size: 2rem
+    font-family: v.$fontMono
+    user-select: none
+
+  &__rng
+    flex: 1 1 100%
+    display: flex
+    justify-content: center
+    align-items: center
+
+.step3
+  flex-wrap: wrap
+  gap: v.$gap
+
+  > label
+    flex: 1 1 auto
+    @media (min-width: 576px)
+      flex: 1 1 calc(100% / 3 - v.$gap)
+
+.step4
+  flex-wrap: wrap
+  gap: v.$gap
+  justify-content: center
+  &__part
+    flex: 1 1 100%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    font-weight: bold
+    user-select: none
+    @media (min-width: 720px)
+      flex: 1 1 calc(100% / 3 - v.$gap)
+
+.step5
+  gap: v.$gap
+  flex-direction: column
+  &__list
+    flex: 1 1 100%
+    display: flex
+    flex-direction: column
+    gap: v.$gap
+    align-items: flex-start

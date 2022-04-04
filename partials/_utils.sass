@@ -1,0 +1,77 @@
+@use 'vars' as v
+
+.flex
+  display: flex
+  width: 100%
+  background-color: v.$cAlt
+  color: v.$cMain
+
+  &__box
+    display: flex
+    width: 100%
+    flex-direction: column
+    max-width: v.$max-width
+    gap: v.$gap
+    margin: auto
+    padding: v.$gap
+    box-sizing: border-box
+    &--footer
+      text-align: center
+
+.shirt
+  position: relative
+  display: none
+  flex: 1
+  justify-content: center
+  align-items: center
+  gap: v.$gap
+  &--active
+    display: flex
+  &__base
+    max-width: 320px
+    height: auto
+  &__pic
+    position: absolute
+    top: 25%
+    left: 50%
+    transform: translate(-50%,-25%)
+    width: 96px
+    height: 96px
+    border: 1px solid #666
+
+.price
+  position: relative
+  display: flex
+  flex-direction: column
+  flex: 1 1 100%
+  justify-content: center
+  align-items: center
+  gap: v.$gap
+
+.btn, .btn:link, .btn:visited
+  transition: all ease-in-out 0.25s
+  color: v.$cMain
+  background-color: v.$cAlt
+  border: 2px solid v.$cAlt
+  align-items: center
+  justify-content: center
+  display: inline-flex
+  cursor: pointer
+  padding: 0.75em 1.5em
+  font-size: 1rem
+  text-transform: uppercase
+  line-height: 1
+  font-weight: 600
+  letter-spacing: 0.2px
+  font-family: v.$fontMono
+  white-space: nowrap
+  border: 0
+  outline: 0
+  box-shadow: 0 4px 8px #0006
+  border-radius: 2px
+  &:hover
+    color: v.$cExtra01
+    background-color: v.$cExtra03
+
+.hidden
+  display: none
