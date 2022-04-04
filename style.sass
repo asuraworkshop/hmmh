@@ -1,0 +1,39 @@
+@use 'partials/vars' as v
+@use 'partials/general'
+@use 'partials/steps'
+@use 'partials/utils'
+
+.order
+  display: flex
+  width: 100%
+  flex-direction: column
+  max-width: v.$max-width
+  background-color: v.$cMain
+  margin: v.$gap auto
+  padding: v.$gap
+  box-sizing: border-box
+  gap: v.$gap
+
+  &__step
+    flex: 1
+    display: none
+    flex-wrap: wrap
+
+    &--active
+      display: flex
+    > h2
+      flex: 1 1 100%
+
+  &__nav
+    display: flex
+    flex: 1
+    justify-content: space-between
+    gap: v.$gap
+
+  &__overview
+    display: flex
+    flex: 1
+    justify-content: center
+    align-items: center
+    gap: v.$gap
+    flex-wrap: wrap

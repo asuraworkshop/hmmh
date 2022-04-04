@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HmmH Robert Biernat</title>
+    <meta name="author" content="asuraworkshop.com">
+    <meta name="description" content="Test Assigment">
+    <meta name="keywords" content="Test Assigment">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/imagecontrol.js"></script>
+    <script src="js/steps.js"></script>
+
+  </head>
+<body>
+
+<header class="flex">
+  <div class="flex__box">
+    <h1>Formularz zamówienia</h1>
+  </div>
+</header>
+
+<main>
+  <form id="order_form" class="order">
+
+    <div class="order__step order__step--active step1">
+      <h2>Wybór miejsca nadruku</h2>
+      <label class="step1__place">
+        <span class="step1__text">Przód</span>
+        <input class="step1__checkbox" type="checkbox" name="picPlaceFront" value="front" onchange="imgCtrl.setShirtBase(0, this.checked);">
+        <span class="step1__control"></span>
+      </label>
+      <label class="step1__place">
+        <span class="step1__text">Tył</span>
+        <input class="step1__checkbox" type="checkbox" name="picPlaceBack" value="back" onchange="imgCtrl.setShirtBase(1, this.checked);">
+        <span class="step1__control"></span>
+      </label>
+    </div>
+
+    <div class="order__step step2">
+      <h2>Wybór grafiki</h2>
+      <span class="step2__control" onclick="imgCtrl.getImg(-1);"><</span>
+      <img id="step2_img" src="" alt="img">
+      <span class="step2__control" onclick="imgCtrl.getImg(1);">></span>
+      <div class="step2__rng">
+        <button class="btn" type="button" onclick="imgCtrl.getImg(0);">Losuj</button>
+      </div>
+      <input id="picsum_url" type="hidden" name="picsum_url">
+    </div>
+
+    <div class="order__step step3">
+      <h2>Dane zamawiającego</h2>
+      <label>
+        <span>Imię:</span>
+        <input type="text" name="client_name" required>
+      </label>
+      <label>
+        <span>Nazwisko:</span>
+        <input type="text" name="client_surname" required>
+      </label>
+      <label>
+        <span>Ulica:</span>
+        <input type="text" name="client_street" required>
+      </label>
+      <label>
+        <span>Nr. budynku:</span>
+        <input type="text" name="client_street1" required>
+      </label>
+      <label>
+        <span>Nr. lokalu:</span>
+        <input type="text" name="client_street2">
+      </label>
+      <label>
+        <span>Kod pocztowy:</span>
+        <input type="text" name="client_zip" required>
+      </label>
+      <label>
+        <span>Miasto:</span>
+        <input type="text" name="client_city" required>
+      </label>
+      <label>
+        <span>Telefon:</span>
+        <input type="tel" name="client_tel">
+      </label>
+      <label>
+        <span>Adres mailowy:</span>
+        <input type="email" name="client_email" required>
+      </label>
+    </div>
+
+    <div class="order__step step4">
+      <h2>Wybór stylu grafiki</h2>
+      <label class="step4__part">
+        <span>Blur:</span>
+        <input id="blur" type="range" name="picsum_blur" min="0" max="10" value="0" step="1" onchange="imgCtrl.getImg();">
+      </label>
+      <img id="step4_img" src="" alt="img">
+      <label class="step4__part">
+        <span>Grayscale</span>
+        <input id="grayscale" type="checkbox" name="picsum_grayscale" value="1" onchange="imgCtrl.getImg();">
+      </label>
+    </div>
+
+    <div class="order__step step5">
+      <h2>Podsumowanie zamówienia</h2>
+
+      <div class="step5__list">
+        <h3>Miejsce nadruku:</h3>
+        <span>Przód: <strong class="fin_shirt_base"></strong></span>
+        <span>Tył: <strong class="fin_shirt_base"></strong></span>
+        <button class="btn" type="button" onclick="stepsObj.editStep(0);">Edytuj</button>
+      </div>
+
+      <div class="step5__list">
+        <h3>Wybrana grafika:</h3>
+        <span>Seed: <strong id="fin_pic_seed"></strong></span>
+        <button class="btn" type="button" onclick="stepsObj.editStep(1);">Edytuj</button>
+      </div>
+
+      <div class="step5__list">
+        <h3>Dane do wysyłki:</h3>
+        <span>Imię: <strong class="fin_client_data"></strong></span>
+        <span>Nazwisko: <strong class="fin_client_data"></strong></span>
+        <span>Ulica: <strong class="fin_client_data"></strong></span>
+        <span>Nr. budynku: <strong class="fin_client_data"></strong></span>
+        <span>Nr. lokalu: <strong class="fin_client_data"></strong></span>
+        <span>Kod pocztowy: <strong class="fin_client_data"></strong></span>
+        <span>Miasto: <strong class="fin_client_data"></strong></span>
+        <span>Telefon: <strong class="fin_client_data"></strong></span>
+        <span>Adres mailowy: <strong class="fin_client_data"></strong></span>
+        <button class="btn" type="button" onclick="stepsObj.editStep(2);">Edytuj</button>
+      </div>
+
+      <div class="step5__list">
+        <h3>Efekty grafiki:</h3>
+        <span>Grayscale: <strong class="fin_effects"></strong></span>
+        <span>Blur: <strong class="fin_effects"></strong></span>
+        <button class="btn" type="button" onclick="stepsObj.editStep(3);">Edytuj</button>
+      </div>
+
+    </div>
+
+    <div class="order__step step6">
+      <h2>Dziękujemy za złożenie zamówienia!</h2>
+    </div>
+
+    <div class="order__nav">
+      <button type="button" class="btn" onclick="stepsObj.changeStep(-1);">Wstecz</button>
+      <button type="button" class="btn" onclick="stepsObj.changeStep(1);">Dalej</button>
+      <button type="button" class="btn hidden" onclick="stepsObj.finish();">Potwierdzam</button>
+    </div>
+
+    <div class="order__overview">
+      <div class="shirt">
+        <img class="shirt__base" src="img/shirt-front.png" alt="shirt_base1">
+        <img class="shirt__pic" alt="shirt_pic">
+      </div>
+      <div class="shirt">
+        <img class="shirt__base" src="img/shirt-back.png" alt="shirt_base2">
+        <img class="shirt__pic" alt="shirt_pic">
+      </div>
+      <div class="price">
+        <span>Koszt zamówienia: <strong id="order_price"></strong></span>
+        <input id="inp_price" type="hidden" name="final_price">
+      </div>
+    </div>
+
+  </form>
+</main>
+
+<footer class="flex">
+  <div class="flex__box flex__box--footer">
+    <span>HmmH - Test</span>
+  </div>
+</footer>
+
+<script src="js/scripts.js"></script>
+
+</body>
+</html>
